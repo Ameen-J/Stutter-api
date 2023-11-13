@@ -1,12 +1,12 @@
 from flask import Flask, request, jsonify
 import numpy as np
 import librosa
-from tensorflow import keras
+import tensorflow as tf
 from waitress import serve
 app = Flask(__name__)
 
 path = r"./audio_classification_model(20,32).h5"
-model = keras.models.load_model(path)
+model = tf.keras.models.load_model(path)
 
 def process_audio(audio_data, sample_rate, model):
     spectrogram = librosa.feature.melspectrogram(y=audio_data, sr=sample_rate)
@@ -28,6 +28,7 @@ def predict():
 
     return jsonify({"Predicted class": predicted_class})
 
-
 if __name__ == '__main__':
-    serve(app,host='0.0.0.0',port=8080)
+    app.run()
+
+
