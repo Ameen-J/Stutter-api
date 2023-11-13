@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify
 import numpy as np
 import librosa
 from tensorflow import keras
-import os
 from waitress import serve
 app = Flask(__name__)
 
