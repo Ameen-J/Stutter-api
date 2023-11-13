@@ -3,6 +3,7 @@ import numpy as np
 import librosa
 from tensorflow import keras
 import os
+from waitress import serve
 app = Flask(__name__)
 
 path = r"./audio_classification_model(20,32).h5"
@@ -30,4 +31,4 @@ def predict():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port=int(os.getenv('PORT','8080')))
+    serve(app,host='0.0.0.0',port=8080)
