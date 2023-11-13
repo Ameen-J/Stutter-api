@@ -5,7 +5,7 @@ import tensorflow as tf
 from waitress import serve
 app = Flask(__name__)
 
-path = r"./audio_classification_model(20,32).h5"
+path = "audio_classification_model(20,32).h5"
 model = tf.keras.models.load_model(path)
 
 def process_audio(audio_data, sample_rate, model):
