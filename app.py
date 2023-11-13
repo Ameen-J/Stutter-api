@@ -16,7 +16,7 @@ def process_audio(audio_data, sample_rate, model):
     predicted_class = 1 if predicted_prob[0][0] >= 0.5 else 0
     return predicted_class 
 
-@app.route('/predict', methods=['POST'])
+@app.route('/', methods=['POST'])
 def predict():
     if 'audio' not in request.files:
        return jsonify({'error': 'No audio file provided'}), 400
@@ -29,6 +29,6 @@ def predict():
     return jsonify({"Predicted class": predicted_class})
 
 if __name__ == '__main__':
-    app.run()
+    serve(app,host="0.0.0.0",port=8080)
 
 
